@@ -10,10 +10,10 @@ module.exports = class {
 
     constructor(data) {
 
-        this.ready          = false;
+        this.$ready         = false;
 
         $(function() {
-            this.ready      = true;
+            this.$ready     = true;
         });
 
         this.resetStages();
