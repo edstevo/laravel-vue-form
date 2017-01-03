@@ -72,12 +72,11 @@ module.exports = class {
                 .then(response => {
                     this.onSuccess(response.data);
                     resolve(response.data);
+                    this.submitting     = false;
                 })
                 .catch(error => {
                     this.onError(error.response.data);
                     reject(error.response.data);
-                })
-                .finally(function() {
                     this.submitting     = false;
                 });
         });
