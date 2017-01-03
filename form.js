@@ -10,7 +10,8 @@ module.exports = class {
 
     constructor(data) {
 
-        this.submitting     = false;
+        this.resetStages();
+
         this.originalData   = data;
 
         for (let field in this.originalData) {
@@ -50,6 +51,13 @@ module.exports = class {
         this.errors.clear();
     }
 
+    resetStages() {
+        this.submitting     = false;
+        this.submitted      = false;
+        this.succeeded      = false;
+        this.failed         = false;
+    }
+
     post(url, permanentData) {
         return this.submit('post', url, permanentData);
     }
@@ -63,6 +71,8 @@ module.exports = class {
     }
 
     submit(method, url, permanentData) {
+        this.resetStages();
+
         this.submitting = true;
 
         return new Promise((resolve, reject) => {
@@ -84,10 +94,14 @@ module.exports = class {
     }
 
     onSuccess(data) {
+        this.succeeded  = true;
+        this.submitted  = true;
         this.reset();
     }
 
     onError(errors) {
+        this.failed     = true;
+        this.submitted  = true;
         this.errors.record(errors);
     }
 }
