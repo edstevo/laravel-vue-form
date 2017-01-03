@@ -2,7 +2,7 @@
   "name": "laravel-vue-form",
   "version": "1.0.0",
   "description": "As Per Jeffrey Way @Laracasts, Vue Form wrapper",
-  "main": "forms.js",
+  "main": "form.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
