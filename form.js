@@ -10,6 +10,12 @@ module.exports = class {
 
     constructor(data) {
 
+        this.ready          = false;
+
+        $(function() {
+            this.ready      = true;
+        });
+
         this.resetStages();
 
         this.originalData   = data;
