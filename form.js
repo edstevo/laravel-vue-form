@@ -44,7 +44,7 @@ module.exports = class {
         return data;
     }
 
-    setReady() {
+    ready() {
         this.$ready = true;
     }
 
