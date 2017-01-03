@@ -11,11 +11,7 @@ module.exports = class {
 
     constructor(data) {
 
-        this.$ready         = false;
-
-        $(function() {
-            this.$ready     = true;
-        });
+        this.$ready = false;
 
         this.resetStages();
 
@@ -46,6 +42,10 @@ module.exports = class {
         delete data.http;
 
         return data;
+    }
+
+    setReady() {
+        this.$ready = true;
     }
 
     reset() {
