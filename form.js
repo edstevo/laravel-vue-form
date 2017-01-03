@@ -10,6 +10,7 @@ module.exports = class {
 
     constructor(data) {
 
+        this.submitting     = false;
         this.originalData   = data;
 
         for (let field in this.originalData) {
@@ -32,6 +33,8 @@ module.exports = class {
 
         delete data.originalData;
         delete data.errors;
+        delete data.submitting;
+        delete data.http;
 
         return data;
     }
@@ -59,6 +62,7 @@ module.exports = class {
     }
 
     submit(method, url, permanentData) {
+        this.submitting = true;
 
         return new Promise((resolve, reject) => {
 
@@ -70,8 +74,11 @@ module.exports = class {
                     resolve(response.data);
                 })
                 .catch(error => {
-                        this.onError(error.response.data);
+                    this.onError(error.response.data);
                     reject(error.response.data);
+                })
+                .finally(function() {
+                    this.submitting     = false;
                 });
         });
     }
