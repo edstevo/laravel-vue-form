@@ -1,6 +1,6 @@
 {
   "name": "laravel-vue-form",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "As Per Jeffrey Way @Laracasts, Vue Form wrapper",
   "main": "form.js",
   "scripts": {
