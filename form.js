@@ -5,6 +5,7 @@
 var Errors  = require('./errors');
 var axios   = require('axios');
 var _       = require('lodash');
+var $       = require('jquery');
 
 module.exports = class {
 
