@@ -68,7 +68,17 @@ module.exports = class {
 
             var data    = _.extend(this.data(), permanentData);
 
-
+            this.http[method](url, data)
+                .then(response => {
+                    this.onSuccess(response.data);
+                    resolve(response.data);
+                    this.submitting     = false;
+                })
+                .catch(error => {
+                    this.onError(error.response.data);
+                    reject(error.response.data);
+                    this.submitting     = false;
+                });
         });
     }
 
