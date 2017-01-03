@@ -22,7 +22,8 @@ module.exports = class {
 
         this.http       = axios.create({
             headers: {
-                'X-Requested-With': 'XMLHttpRequest'
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': Laravel.csrfToken
             }
         });
     }
