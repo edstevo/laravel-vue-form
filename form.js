@@ -20,7 +20,6 @@ module.exports = class {
         this.errors     = new Errors();
 
         this.http       = axios.create({
-            baseURL: 'http://api.metinet.uk/v1',
             headers: {
                 'X-Requested-With': 'XMLHttpRequest'
             }
