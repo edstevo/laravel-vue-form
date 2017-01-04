@@ -90,25 +90,30 @@ module.exports = class {
                 .then(response => {
                     this.onSuccess(response.data);
                     resolve(response.data);
+
+                    this.succeeded      = true;
+                    this.submitted      = true;
                     this.submitting     = false;
                 })
                 .catch(error => {
                     this.onError(error.response.data);
                     reject(error.response.data);
+
+                    if (error.response.status != 422) {
+                        this.failed     = true;
+                    }
+
+                    this.submitted      = true;
                     this.submitting     = false;
                 });
         });
     }
 
     onSuccess(data) {
-        this.succeeded  = true;
-        this.submitted  = true;
         this.reset();
     }
 
     onError(errors) {
-        this.failed     = true;
-        this.submitted  = true;
         this.errors.record(errors);
     }
 }
