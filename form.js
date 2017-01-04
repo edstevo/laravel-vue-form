@@ -60,7 +60,7 @@ module.exports = class {
         this.errors.clear();
     }
 
-    clearOnSubmit(bool: false)
+    clearOnSubmit(bool)
     {
         this.clearOnSubmit  = bool;
     }
