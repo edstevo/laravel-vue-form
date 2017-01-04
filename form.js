@@ -11,7 +11,8 @@ module.exports = class {
 
     constructor(data) {
 
-        this.$ready = false;
+        this.$ready         = false;
+        this.clearOnSubmit  = false;
 
         this.resetStages();
 
@@ -40,6 +41,7 @@ module.exports = class {
         delete data.errors;
         delete data.submitting;
         delete data.http;
+        delete data.clearOnSubmit;
 
         return data;
     }
@@ -56,6 +58,11 @@ module.exports = class {
         }
 
         this.errors.clear();
+    }
+
+    clearOnSubmit(bool: false)
+    {
+        this.clearOnSubmit  = bool;
     }
 
     resetStages() {
@@ -110,7 +117,11 @@ module.exports = class {
     }
 
     onSuccess(data) {
-        this.reset();
+
+        if (this.clearOnSubmit)
+        {
+            this.reset();
+        }
     }
 
     onError(errors) {
