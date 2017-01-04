@@ -60,9 +60,9 @@ module.exports = class {
         this.errors.clear();
     }
 
-    clearOnSubmit(bool)
+    clearOnSubmit()
     {
-        this.clearOnSubmit  = bool;
+        this.clearOnSubmit  = true;
     }
 
     resetStages() {
