@@ -35,13 +35,13 @@ module.exports = class {
 
     data() {
 
-        let data   = Object.assign({}, this);
+        let data   = {};
 
-        delete data.originalData;
-        delete data.errors;
-        delete data.submitting;
-        delete data.http;
-        delete data.clearOnSubmit;
+        for(let property in this.originalData) {
+
+            data[property]  = this[property];
+
+        }
 
         return data;
     }
